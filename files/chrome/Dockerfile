@@ -38,3 +38,9 @@ WORKDIR /home/chrome
 ADD run.sh /home/chrome/run.sh
 RUN chmod 755 /home/chrome/run.sh
 CMD ["/bin/bash", "/home/chrome/run.sh"]
+
+RUN cp /etc/hosts /tmp/hosts
+RUN mkdir -p -- /lib-override && cp /lib/x86_64-linux-gnu/libnss_files.so.2 /lib-override
+RUN perl -pi -e 's:/etc/hosts:/tmp/hosts:g' /lib-override/libnss_files.so.2
+ENV LD_LIBRARY_PATH /lib-override
+RUN echo "172.17.42.1 rob.nxtgd.net" >> /tmp/hosts

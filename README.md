@@ -1,6 +1,12 @@
+sudo docker run -d -p 0.0.0.0:49044:4444 rjferguson21/selenium
+sudo docker run -d -e GRID_IP=172.17.0.2 rjferguson21/chrome /home/chrome/run.sh
+sudo docker run -d -e GRID_IP=172.17.0.2 rjferguson21/firefox
+
+
+
 # Docker Selenium Grid
 
-CLI program for building and managing a Selenium Grid with Docker containers. Each browser node runs a single instance of the browser. I find this 
+CLI program for building and managing a Selenium Grid with Docker containers. Each browser node runs a single instance of the browser. I find this
 helpful when running Selenium tests in parallel.
 
 [View the Demo](http://asciinema.org/a/5879) Installation and Usage on Ubuntu Raring with Vagrant
@@ -30,7 +36,7 @@ Once installed you can start and manage a Selenium Grid. Example:
 # Note: you may have to use "sudo" if your linux user does not have proper permissions
 # Start the Hub
 dsgrid start
-# Add Nodes 
+# Add Nodes
 dsgrid nodes add firefox
 dsgrid nodes add phantomjs
 # Restart Nodes by Browser
@@ -79,5 +85,3 @@ The tests are incomplete. What you see are my TDD leftovers.
 ## Having Problems? Need Help?
 
 **Author Email:** brady[at]vitrano.me or get my Gmail from the setup.py
-
-
